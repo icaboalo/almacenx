@@ -10,22 +10,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace almacenx
 {
     /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
+    /// Lógica de interacción para AltaAlmacen.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AltaAlmacen : Window
     {
-        public MainWindow()
+        Window parent;
+        public AltaAlmacen(Window parent)
         {
             InitializeComponent();
+            this.parent = parent;
+            Connection.fillArticles(cbArticulo);
+            Connection.fillUsers(cbIdUser);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            new MainWindow().Show();
+        }
+
+        private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
 
         }
