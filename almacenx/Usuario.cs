@@ -32,9 +32,9 @@ namespace Almacen
             esAdmin = adm;
             reportes = rep;
         }
-        public Usuario(Int16 i, String pw)
+        public Usuario(String log, String pw)
         {
-            id = i;
+            login = log;
             pwd = pw;
         }
         public void iniciar()
