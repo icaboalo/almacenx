@@ -24,10 +24,18 @@ namespace almacenx
         {
             InitializeComponent();
         }
+<<<<<<< HEAD
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+=======
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            Usuario u = new Usuario(txUsuario.Text, txPassword.Text);
+            u.iniciar();
+>>>>>>> 7bda7cc265669c581e68227f94a7774ed14a1962
         }
     }
 }

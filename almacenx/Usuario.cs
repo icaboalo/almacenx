@@ -32,10 +32,43 @@ namespace Almacen
             esAdmin = adm;
             reportes = rep;
         }
-        public Usuario(Int16 i, String pw)
+        public Usuario(String log, String pw)
         {
-            id = i;
+            login = log;
             pwd = pw;
+        }
+        public void iniciar()
+        {
+            SqlConnection con;
+            SqlDataReader dr;
+            SqlCommand cmd;
+
+            try
+            {
+                con = Conexion.addConnection();
+                cmd = new SqlCommand(String.Format("select contra from usuarios where nombreUsuario= '{0}'", login), con);
+                dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    if (dr.GetString(0).Equals(pwd))
+                    {
+                        MessageBox.Show("¡Contraseña válida!");
+                        AltaAlmacen w = new AltaAlmacen();
+                        w.Show();
+                    }
+                    else
+                        MessageBox.Show("¡Contraseña inválida!");
+                }
+                else
+                {
+                    MessageBox.Show("¡Usuario incorrecto! :(");
+                }
+                dr.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo conectar --" + ex);
+            }
         }
     }
 }
